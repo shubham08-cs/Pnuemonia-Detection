@@ -1,0 +1,13 @@
+streamlit>=1.25
+streamlit_extras
+streamlit_option_menu
+pandas
+numpy
+matplotlib
+seaborn
+fsspec
+Pillow
+tensorflow>=2.12
+plotly>=5.0
+scipy>=1.8
+reportlab>=4.0
