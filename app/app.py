@@ -1571,7 +1571,7 @@ if page not in ["🏥 Analyze", "📚 Learn", "👨‍💼 About"]:
     with col_3d_intro2:
         try:
             fig_lung_intro = create_3d_lung_model()
-            st.plotly_chart(fig_lung_intro, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_lung_intro, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.warning("3D Model loading... please ensure Plotly is properly installed")
 
@@ -1590,7 +1590,7 @@ if page not in ["🏥 Analyze", "📚 Learn", "👨‍💼 About"]:
         """, unsafe_allow_html=True)
         try:
             fig_healthy = create_healthy_lung_3d()
-            st.plotly_chart(fig_healthy, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_healthy, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load healthy lung model")
 
@@ -1603,7 +1603,7 @@ if page not in ["🏥 Analyze", "📚 Learn", "👨‍💼 About"]:
         """, unsafe_allow_html=True)
         try:
             fig_infected = create_pneumonia_lung_3d()
-            st.plotly_chart(fig_infected, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_infected, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load pneumonia lung model")
 
@@ -1622,7 +1622,7 @@ if page not in ["🏥 Analyze", "📚 Learn", "👨‍💼 About"]:
         """, unsafe_allow_html=True)
         try:
             fig_dna = create_dna_helix_3d()
-            st.plotly_chart(fig_dna, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_dna, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load DNA visualization")
 
@@ -1635,7 +1635,7 @@ if page not in ["🏥 Analyze", "📚 Learn", "👨‍💼 About"]:
         """, unsafe_allow_html=True)
         try:
             fig_medical = create_floating_medical_icons()
-            st.plotly_chart(fig_medical, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_medical, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load medical icons visualization")
 
@@ -1786,7 +1786,7 @@ if page == "🏥 Analyze":
     with col_3d_intro2:
         try:
             fig_lung_intro = create_3d_lung_model()
-            st.plotly_chart(fig_lung_intro, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_lung_intro, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.warning("3D Model loading... please ensure Plotly is properly installed")
     
@@ -1805,7 +1805,7 @@ if page == "🏥 Analyze":
         """, unsafe_allow_html=True)
         try:
             fig_healthy = create_healthy_lung_3d()
-            st.plotly_chart(fig_healthy, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_healthy, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load healthy lung model")
     
@@ -1818,7 +1818,7 @@ if page == "🏥 Analyze":
         """, unsafe_allow_html=True)
         try:
             fig_infected = create_pneumonia_lung_3d()
-            st.plotly_chart(fig_infected, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_infected, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load pneumonia lung model")
     
@@ -1874,7 +1874,7 @@ if page == "🏥 Analyze":
         
         if uploaded_file:
             st.markdown("<h4 style='color: #6B7280; margin: 20px 0 12px 0;'>Preview</h4>", unsafe_allow_html=True)
-            st.image(uploaded_file, use_container_width=True)
+            st.image(uploaded_file, width='stretch')
     
     with col_result:
         st.markdown("<h3 style='margin: 0 0 16px 0;'>🔍 Results</h3>", unsafe_allow_html=True)
@@ -1885,7 +1885,7 @@ if page == "🏥 Analyze":
             else:
                 col_btn = st.columns([1])[0]
                 with col_btn:
-                    analyze_click = st.button("🚀 ANALYZE", type="primary", use_container_width=True)
+                    analyze_click = st.button("🚀 ANALYZE", type="primary", width='stretch')
                 
                 if analyze_click:
                     with st.spinner('Processing and generating 3D analysis...'):
@@ -1954,22 +1954,22 @@ if page == "🏥 Analyze":
                         if view_mode == '3D Surface Heatmap':
                             st.markdown("<div style='background: rgba(109,76,255,0.08); padding: 12px; border-radius: 12px; margin-bottom: 16px;'><strong>🔍 3D Image-Based Heatmap Analysis</strong> - Surface height represents attention intensity</div>", unsafe_allow_html=True)
                             fig_3d = create_3d_heatmap(processed, saliency, is_pneumonia, height_scale=height_scale, downsample_factor=downsample)
-                            st.plotly_chart(fig_3d, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+                            st.plotly_chart(fig_3d, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
                             
                         elif view_mode == '2D Attention Overlay':
                             st.markdown("<div style='background: rgba(109,76,255,0.08); padding: 12px; border-radius: 12px; margin-bottom: 16px;'><strong>🖼️ 2D Attention Heatmap</strong> - Highlights regions the AI focused on</div>", unsafe_allow_html=True)
                             overlay = create_attention_overlay(img, saliency)
-                            st.image(overlay, caption='AI Attention Overlay on Original X-ray', use_container_width=True)
+                            st.image(overlay, caption='AI Attention Overlay on Original X-ray', width='stretch')
                             
                         elif view_mode == '3D Confidence Cone':
                             st.markdown("<div style='background: rgba(109,76,255,0.08); padding: 12px; border-radius: 12px; margin-bottom: 16px;'><strong>📈 3D Confidence Visualization</strong> - Risk cone shows diagnosis confidence level</div>", unsafe_allow_html=True)
                             fig_confidence = create_3d_confidence_visualization(confidence, is_pneumonia)
-                            st.plotly_chart(fig_confidence, use_container_width=True, config={'scrollZoom': True})
+                            st.plotly_chart(fig_confidence, width='stretch', config={'scrollZoom': True})
                             
                         elif view_mode == '3D Lung Model':
                             st.markdown("<div style='background: rgba(109,76,255,0.08); padding: 12px; border-radius: 12px; margin-bottom: 16px;'><strong>🫁 3D Interactive Lung Model</strong> - Rotating 3D visualization of analyzed lung structure</div>", unsafe_allow_html=True)
                             fig_lung = create_3d_lung_model()
-                            st.plotly_chart(fig_lung, use_container_width=True, config={'scrollZoom': True})
+                            st.plotly_chart(fig_lung, width='stretch', config={'scrollZoom': True})
 
                         if region_analysis:
                             st.markdown("<h3 style='margin-top: 8px; margin-bottom: 8px;'>📍 Detailed Findings & Analytics</h3>", unsafe_allow_html=True)
@@ -2073,7 +2073,7 @@ if page == "🏥 Analyze":
                                     data=pdf_data,
                                     file_name=filename,
                                     mime="application/pdf",
-                                    use_container_width=True
+                                    width='stretch'
                                 )
         else:
             st.markdown(f"""<div class='info-box' style='text-align: center; padding: 40px 20px; border: 2px dashed var(--border);'>
@@ -2172,7 +2172,7 @@ if page == "🏥 Analyze":
         with col_select:
             sample_choice = st.selectbox("Select:", ["Normal X-Ray", "Pneumonia Case"], label_visibility="collapsed")
         with col_button:
-            load_sample = st.button("Load", type="primary", use_container_width=True)
+            load_sample = st.button("Load", type="primary", width='stretch')
         
         if load_sample:
             st.session_state.demo_image = load_sample_data('data1n.jpeg') if sample_choice == "Normal X-Ray" else load_sample_data('data1p.jpeg')
@@ -2184,13 +2184,13 @@ if page == "🏥 Analyze":
         
         with demo_col1:
             st.markdown("<h4 style='color: #6B7280; margin: 0 0 12px 0;'>Image</h4>", unsafe_allow_html=True)
-            st.image(st.session_state.demo_image, use_container_width=True)
+            st.image(st.session_state.demo_image, width='stretch')
         
         with demo_col2:
             st.markdown("<h4 style='color: #6B7280; margin: 0 0 12px 0;'>Analysis</h4>", unsafe_allow_html=True)
             if model is None:
                 st.error("Prediction unavailable: model file is not loaded.")
-            elif st.button("Analyze Sample", type="primary", use_container_width=True):
+            elif st.button("Analyze Sample", type="primary", width='stretch'):
                 with st.spinner('Processing...'):
                     demo_processed = preprocess_image(st.session_state.demo_image)
                     demo_pred = model.predict(demo_processed)
@@ -2441,7 +2441,7 @@ elif page == "📚 Learn":
         """, unsafe_allow_html=True)
         try:
             fig_cross_section = create_lung_cross_section_3d()
-            st.plotly_chart(fig_cross_section, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_cross_section, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load lung cross-section visualization")
 
@@ -2459,7 +2459,7 @@ elif page == "📚 Learn":
         """, unsafe_allow_html=True)
         try:
             fig_progression = create_infection_progression_3d()
-            st.plotly_chart(fig_progression, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_progression, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load infection progression visualization")
 
@@ -2524,12 +2524,12 @@ elif page == "📚 Learn":
             st.markdown("""<div class='card' style='text-align:center;'>
                 <h4>Normal Chest X-Ray</h4>
             </div>""", unsafe_allow_html=True)
-            st.image(img_normal, use_container_width=True)
+            st.image(img_normal, width='stretch')
         with col2:
             st.markdown("""<div class='card' style='text-align:center;'>
                 <h4>Pneumonia Chest X-Ray</h4>
             </div>""", unsafe_allow_html=True)
-            st.image(img_pneumonia, use_container_width=True)
+            st.image(img_pneumonia, width='stretch')
     except Exception:
         st.info("Sample X-ray images unavailable")
 
@@ -2652,11 +2652,11 @@ elif page == "👨‍💼 About":
     
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.link_button("🐙 GitHub", "https://github.com/shubham08-cs", use_container_width=True)
+        st.link_button("🐙 GitHub", "https://github.com/shubham08-cs", width='stretch')
     with col2:
-        st.link_button("💼 LinkedIn", "https://www.linkedin.com/in/shubham-ich/", use_container_width=True)
+        st.link_button("💼 LinkedIn", "https://www.linkedin.com/in/shubham-ich/", width='stretch')
     with col3:
-        st.link_button("✉️ Email", "mailto:me.shubhamsingh8998@gmail.com", use_container_width=True)
+        st.link_button("✉️ Email", "mailto:me.shubhamsingh8998@gmail.com", width='stretch')
     
     st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
     st.markdown("<h2 class='section-header'>🚀 Project Vision</h2>", unsafe_allow_html=True)
@@ -2686,7 +2686,7 @@ elif page == "👨‍💼 About":
         """, unsafe_allow_html=True)
         try:
             fig_neural = create_neural_network_3d()
-            st.plotly_chart(fig_neural, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_neural, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load neural network visualization")
 
@@ -2705,7 +2705,7 @@ elif page == "👨‍💼 About":
         """, unsafe_allow_html=True)
         try:
             fig_tech = create_tech_portfolio_3d()
-            st.plotly_chart(fig_tech, use_container_width=True, config={'scrollZoom': True, 'displayModeBar': True})
+            st.plotly_chart(fig_tech, width='stretch', config={'scrollZoom': True, 'displayModeBar': True})
         except Exception as e:
             st.error("Unable to load tech portfolio visualization")
 
